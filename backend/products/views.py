@@ -1,5 +1,7 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import JsonResponse
+from .models import Products
 
-def index(request):
-    return HttpResponse("This is the products index page.")
+def product_list(request):
+    products = list(Products.objects.values())
+
+    return JsonResponse(products, safe=False)
