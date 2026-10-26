@@ -9,7 +9,7 @@ export default function Header() {
     }`;
 
   return (
-    <header className="sticky top-0 z-10 border-b border-gray-200 bg-white">
+    <header className="sticky top-0 z-10 border-b border-gray-200 mb-8 bg-white">
       <nav className="flex items-center justify-between mx-auto py-4 w-11/12">
         <h1 className="text-xl font-semibold text-gray-800">
           Django learning project store

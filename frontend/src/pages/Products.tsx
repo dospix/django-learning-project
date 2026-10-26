@@ -38,20 +38,47 @@ export default function Products() {
 
   return (
     <div>
-      <h1>Products</h1>
+      <h1 className="mb-8 text-3xl text-center font-bold text-gray-800">Store products</h1>
 
       {products.length === 0 ? (
-        <p>No products found.</p>
+        <p className="text-center text-red-500">No products found!</p>
       ) : (
-        <ul>
-          {products.map((product) => (
-            <li key={product.id}>
-              <h2>{product.name}</h2>
-              <p>{product.description}</p>
-              <p>Price: {product.price}</p>
-            </li>
-          ))}
-        </ul>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mx-4">
+        {products.map((product) => (
+          <article
+            key={product.id}
+            className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-md"
+          >
+            <img
+              src={product.thumbnail}
+              alt={product.name}
+              className="h-48 w-full"
+            />
+
+            {/* Product information */}
+            <div className="flex flex-col p-5">
+              <h2 className="text-lg font-semibold text-gray-900">
+                {product.name}
+              </h2>
+
+              <p className="mt-2 text-sm leading-relaxed text-gray-600">
+                {product.description}
+              </p>
+
+              <div className="flex justify-between mt-4 border-t border-gray-100 pt-4">
+                <p className="text-lg font-bold text-blue-700">
+                  {"$" + product.price}
+                </p>
+                <button>
+                  <span className="rounded-md bg-blue-500 px-4 py-2 text-sm font-medium text-white hover:bg-blue-600">
+                    Add to cart
+                  </span>
+                </button>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
       )}
     </div>
   );
